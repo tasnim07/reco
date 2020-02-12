@@ -42,8 +42,10 @@ setup(name='reco',
                 'reco.cross_validation'],
       ext_modules = ext_modules,
       cmdclass= {'build_ext': build_ext},
-      install_requires=['numpy',
-                        'pandas',
+      install_requires=['numpy==1.18.1',
+                        'pandas==1.0.1',
+                        'tensorflow==2.1.0',
+                        'Keras==2.3.1'
                         ],
       zip_safe=False
       )
