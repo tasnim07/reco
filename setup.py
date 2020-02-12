@@ -1,15 +1,18 @@
 from setuptools import setup, Extension
+import subprocess as sp
 
 try:
     import numpy as np
 except ImportError:
-    exit('Please install numpy first.\nUse pip install numpy.')
+    sp.Popen("pip install numpy==1.18.1", stdout=sp.PIPE, shell=True).communicate()
+    # exit('Please install numpy first.\nUse pip install numpy.')
 
 try:
     from Cython.Build import cythonize
     from Cython.Distutils import build_ext
 except ImportError:
-    exit('You need Cython too :(.\n Use pip install cython.\nNo more requirements, promise!')
+    sp.Popen("pip install Cython==0.29.15", stdout=sp.PIPE, shell=True).communicate()
+    # exit('You need Cython too :(.\n Use pip install cython.\nNo more requirements, promise!')
 
 extensions = [
     Extension(
@@ -32,20 +35,20 @@ setup(name='reco',
       author='Mayukh Bhattacharyya',
       author_email='mayukh.superb@gmail.com',
       license='MIT',
-      download_url = 'https://github.com/mayukh18/reco/tarball/0.1.17',
-      include_package_data = True,
+      download_url='https://github.com/mayukh18/reco/tarball/0.1.17',
+      include_package_data=True,
       keywords=['recommendation'],
       packages=['reco',
                 'reco.recommender',
                 'reco.datasets',
                 'reco.metrics',
                 'reco.cross_validation'],
-      ext_modules = ext_modules,
-      cmdclass= {'build_ext': build_ext},
-      install_requires=['numpy==1.18.1',
-                        'pandas==1.0.1',
-                        'tensorflow==2.1.0',
-                        'Keras==2.3.1'
-                        ],
+      ext_modules=ext_modules,
+      cmdclass={'build_ext': build_ext},
+      install_requires=[
+          'pandas==1.0.1',
+          'tensorflow==2.1.0',
+          'Keras==2.3.1'
+      ],
       zip_safe=False
       )
