@@ -5,6 +5,7 @@ try:
     import numpy as np
 except ImportError:
     sp.Popen("pip install numpy==1.18.1", stdout=sp.PIPE, shell=True).communicate()
+    import numpy as np
     # exit('Please install numpy first.\nUse pip install numpy.')
 
 try:
@@ -12,6 +13,8 @@ try:
     from Cython.Distutils import build_ext
 except ImportError:
     sp.Popen("pip install Cython==0.29.15", stdout=sp.PIPE, shell=True).communicate()
+    from Cython.Build import cythonize
+    from Cython.Distutils import build_ext
     # exit('You need Cython too :(.\n Use pip install cython.\nNo more requirements, promise!')
 
 extensions = [
