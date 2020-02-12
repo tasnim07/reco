@@ -90,12 +90,12 @@ class SVDRecommender:
         userField = formatizer['user']
         valueField = formatizer['value']
 
-        userList = data.iloc[:,userField].tolist()
-        itemList = data.iloc[:,itemField].tolist()
-        valueList = data.iloc[:,valueField].tolist()
+        userList = data.loc[:,userField].tolist()
+        itemList = data.loc[:,itemField].tolist()
+        valueList = data.loc[:,valueField].tolist()
 
-        users = list(set(data.iloc[:,userField]))
-        items = list(set(data.iloc[:,itemField]))
+        users = list(set(data.loc[:,userField]))
+        items = list(set(data.loc[:,itemField]))
 
         users_index = {users[i]: i for i in range(len(users))}
 
@@ -190,8 +190,8 @@ class SVDRecommender:
                  pair in each row of X.
         """
 
-        users = X.iloc[:,formatizer['user']].tolist()
-        items = X.iloc[:,formatizer['item']].tolist()
+        users = X.loc[:,formatizer['user']].tolist()
+        items = X.loc[:,formatizer['item']].tolist()
 
         if self.method == 'default':
 

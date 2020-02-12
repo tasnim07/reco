@@ -2,6 +2,7 @@
 
 reco/reco.egg-info
 workspace/
+*.pyc
 
 
 .pypirc
